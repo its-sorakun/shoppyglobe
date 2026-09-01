@@ -1,26 +1,37 @@
 import Header from './components/Header';
 import ProductList from './components/ProductList';
 import ProductDetail from './components/ProductDetail';
+import Cart from './components/Cart';
 import { useState } from 'react';
 
-// Main App component
-// Currently using a simple state to switch between list and detail views
-// until React Router is installed and implemented.
 function App() {
   const [selectedProductId, setSelectedProductId] = useState(null);
+  const [view, setView] = useState('home'); // 'home' | 'cart'
+
+  const handleNav = (targetView) => {
+    setView(targetView);
+    if (targetView === 'home') setSelectedProductId(null);
+  };
+
+  const handleSelectProduct = (id) => {
+    setSelectedProductId(id);
+    setView('detail');
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900">
-      <Header />
+      <Header onNav={handleNav} />
       
       <main>
-        {selectedProductId ? (
+        {view === 'cart' && <Cart />}
+        {view === 'detail' && selectedProductId && (
           <ProductDetail 
             id={selectedProductId} 
-            onBack={() => setSelectedProductId(null)} 
+            onBack={() => setView('home')} 
           />
-        ) : (
-          <ProductList onSelectProduct={(id) => setSelectedProductId(id)} />
+        )}
+        {view === 'home' && (
+          <ProductList onSelectProduct={handleSelectProduct} />
         )}
       </main>
     </div>
