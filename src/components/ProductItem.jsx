@@ -1,4 +1,9 @@
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../redux/cartSlice';
+
 const ProductItem = ({ product, onClick }) => {
+  const dispatch = useDispatch();
+
   return (
     <div 
       className="bg-white border rounded shadow p-4 flex flex-col justify-between cursor-pointer hover:shadow-lg transition"
@@ -13,7 +18,7 @@ const ProductItem = ({ product, onClick }) => {
         className="mt-4 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition"
         onClick={(e) => {
           e.stopPropagation(); // prevent triggering the product click
-          console.log('Add to cart logic will go here');
+          dispatch(addToCart(product));
         }}
       >
         Add to Cart

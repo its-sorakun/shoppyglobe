@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../redux/cartSlice';
 
 // For now, this expects an 'id' prop to fetch data.
 // Later, this will use route parameters (e.g., useParams() from react-router-dom)
@@ -6,6 +8,7 @@ const ProductDetail = ({ id, onBack }) => {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     // Only fetch if we have an ID (helpful for our current manual routing)
@@ -54,7 +57,7 @@ const ProductDetail = ({ id, onBack }) => {
           <p className="text-2xl font-semibold mb-6">${product.price}</p>
           <button 
             className="bg-blue-600 text-white py-3 px-6 rounded shadow hover:bg-blue-700 transition"
-            onClick={() => console.log('Add to cart logic will go here')}
+            onClick={() => dispatch(addToCart(product))}
           >
             Add to Cart
           </button>
