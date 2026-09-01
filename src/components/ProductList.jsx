@@ -3,7 +3,7 @@ import ProductItem from './ProductItem';
 import { useSelector } from 'react-redux';
 import { selectSearchTerm } from '../redux/searchSlice';
 
-const ProductList = ({ onSelectProduct }) => {
+const ProductList = () => {
   const { products, loading, error } = useProductList();
   const searchTerm = useSelector(selectSearchTerm);
 
@@ -28,11 +28,7 @@ const ProductList = ({ onSelectProduct }) => {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {filteredProducts.map(product => (
-            <ProductItem 
-              key={product.id} 
-              product={product} 
-              onClick={() => onSelectProduct && onSelectProduct(product.id)}
-            />
+            <ProductItem key={product.id} product={product} />
           ))}
         </div>
       )}

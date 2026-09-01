@@ -1,13 +1,15 @@
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { addToCart } from '../redux/cartSlice';
 
-const ProductItem = ({ product, onClick }) => {
+const ProductItem = ({ product }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   return (
     <div 
       className="bg-white border rounded shadow p-4 flex flex-col justify-between cursor-pointer hover:shadow-lg transition"
-      onClick={onClick}
+      onClick={() => navigate(`/product/${product.id}`)}
     >
       <div>
         <img src={product.thumbnail} alt={product.title} className="w-full h-48 object-cover rounded mb-4" />

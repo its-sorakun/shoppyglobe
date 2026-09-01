@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { useParams, useNavigate } from 'react-router-dom';
 import { addToCart } from '../redux/cartSlice';
 
-// For now, this expects an 'id' prop to fetch data.
-// Later, this will use route parameters (e.g., useParams() from react-router-dom)
-const ProductDetail = ({ id, onBack }) => {
+const ProductDetail = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // Only fetch if we have an ID (helpful for our current manual routing)
     if (!id) return;
 
     const fetchProductDetails = async () => {
@@ -41,7 +41,7 @@ const ProductDetail = ({ id, onBack }) => {
   return (
     <div className="p-8 max-w-4xl mx-auto">
       <button 
-        onClick={onBack}
+        onClick={() => navigate('/')}
         className="mb-4 text-blue-600 hover:underline"
       >
         &larr; Back to Products
