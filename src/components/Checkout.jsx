@@ -1,3 +1,4 @@
+// Checkout.jsx: Component handling the final checkout process. Displays the cart summary and processes the simulated order placement.
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -16,8 +17,8 @@ const Checkout = () => {
 
     setOrderPlaced(true);
 
-    // Intentionally delay the redirect here. If we execute navigate() immediately, 
-    // the component unmounts instantly and the user never gets to visually process the success toast.
+    // The redirect is intentionally delayed here. Executing navigate() immediately causes the component 
+    // to unmount instantly, preventing visual processing of the success toast before navigation occurs.
     setTimeout(() => {
       dispatch(clearCart());
       navigate('/');
