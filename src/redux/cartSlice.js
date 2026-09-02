@@ -1,3 +1,4 @@
+// cartSlice.js: Redux Toolkit slice responsible for managing the state of the shopping cart, including adding, removing, and updating item quantities.
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -23,8 +24,8 @@ export const cartSlice = createSlice({
       const { id, quantity } = action.payload;
       const item = state.items.find(i => i.id === id);
       
-      // We must explicitly guard this mutation. Immer uses Proxies under the hood,
-      // and attempting to assign properties to undefined will throw a TypeError.
+      // This mutation must be explicitly guarded. Immer uses Proxies under the hood,
+      // and attempting to assign properties to undefined objects will throw a TypeError.
       if (item && quantity >= 1) {
         item.quantity = quantity;
       }
