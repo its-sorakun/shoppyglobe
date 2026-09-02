@@ -13,6 +13,8 @@ const Header = () => {
       <Link to="/" className="text-2xl font-bold whitespace-nowrap">ShoppyGlobe</Link>
       
       <div className="flex-1 max-w-xl mx-4">
+        {/* Using a controlled input tied directly to the Redux dispatch means every keystroke 
+            synchronously updates global state, allowing ProductList to filter in real-time. */}
         <input 
           type="text" 
           placeholder="Search products..." 
