@@ -22,6 +22,9 @@ export const cartSlice = createSlice({
     updateQuantity: (state, action) => {
       const { id, quantity } = action.payload;
       const item = state.items.find(i => i.id === id);
+      
+      // We must explicitly guard this mutation. Immer uses Proxies under the hood,
+      // and attempting to assign properties to undefined will throw a TypeError.
       if (item && quantity >= 1) {
         item.quantity = quantity;
       }
