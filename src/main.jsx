@@ -6,12 +6,17 @@ import { store } from './redux/store'
 import './index.css'
 
 import App from './App.jsx'
+
+// Lazily load route chunks so the initial JS bundle doesn't block the critical rendering path
+// with views the user hasn't even clicked on yet.
 const ProductList = lazy(() => import('./components/ProductList.jsx'))
 const ProductDetail = lazy(() => import('./components/ProductDetail.jsx'))
 const Cart = lazy(() => import('./components/Cart.jsx'))
 const Checkout = lazy(() => import('./components/Checkout.jsx'))
 const NotFound = lazy(() => import('./components/NotFound.jsx'))
 
+// We use createBrowserRouter to opt into React Router v6's data APIs.
+// Even though we aren't utilizing route loaders here, it future-proofs the routing architecture.
 const router = createBrowserRouter([
   {
     path: '/',
