@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { selectCartItems } from '../redux/cartSlice';
 import CartItem from './CartItem';
 
@@ -22,6 +23,14 @@ const Cart = () => {
             <div className="flex justify-between items-center mt-6 pt-6 border-t">
               <span className="text-xl font-bold">Total:</span>
               <span className="text-xl font-bold">${totalAmount.toFixed(2)}</span>
+            </div>
+            <div className="mt-8 flex justify-end">
+              <Link 
+                to="/checkout" 
+                className="bg-green-600 text-white py-3 px-8 rounded shadow hover:bg-green-700 transition font-semibold"
+              >
+                Proceed to Checkout
+              </Link>
             </div>
           </>
         )}
