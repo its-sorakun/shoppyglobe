@@ -3,10 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { addToCart } from '../redux/cartSlice';
 
-/**
- * ProductItem Component
- * Renders an individual product card with details and an Add to Cart button.
- */
 const ProductItem = ({ product }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -24,7 +20,8 @@ const ProductItem = ({ product }) => {
       <button 
         className="mt-4 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition"
         onClick={(e) => {
-          e.stopPropagation(); // prevent triggering the product click
+          // Stop bubbling so we don't trigger the wrapper div's onClick and navigate away mid-dispatch
+          e.stopPropagation();
           dispatch(addToCart(product));
         }}
       >
@@ -34,7 +31,6 @@ const ProductItem = ({ product }) => {
   );
 };
 
-// Define appropriate prop types as requested in the assignment
 ProductItem.propTypes = {
   product: PropTypes.shape({
     id: PropTypes.number.isRequired,
