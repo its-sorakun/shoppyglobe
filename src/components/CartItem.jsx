@@ -1,3 +1,4 @@
+// CartItem.jsx: Component rendering a single row within the shopping cart. Handles dispatching quantity updates and removals for its specific item.
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { updateQuantity, removeFromCart } from '../redux/cartSlice';
@@ -6,7 +7,7 @@ const CartItem = ({ item }) => {
   const dispatch = useDispatch();
 
   const handleDecrease = () => {
-    // Guarding against rapid double-clicks firing the dispatch before React can re-render and disable the button
+    // This conditional guards against rapid double-clicks firing the dispatch before React can re-render and disable the button, preventing invalid negative quantities from reaching the Redux store.
     if (item.quantity > 1) {
       dispatch(updateQuantity({ id: item.id, quantity: item.quantity - 1 }));
     }
