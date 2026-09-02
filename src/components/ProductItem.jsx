@@ -1,3 +1,4 @@
+// ProductItem.jsx: Component rendering an individual product card for list views. Handles navigation to the product detail view and direct cart additions.
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -20,7 +21,7 @@ const ProductItem = ({ product }) => {
       <button 
         className="mt-4 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition"
         onClick={(e) => {
-          // Stop bubbling so we don't trigger the wrapper div's onClick and navigate away mid-dispatch
+          // Stop event bubbling to prevent triggering the wrapper div's onClick handler. Failing to stop propagation would cause immediate navigation away from the current view mid-dispatch.
           e.stopPropagation();
           dispatch(addToCart(product));
         }}
