@@ -1,3 +1,4 @@
+// ProductDetail.jsx: Component responsible for fetching and displaying in-depth information about a specific product based on the active route parameter.
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
@@ -33,8 +34,8 @@ const ProductDetail = () => {
 
     fetchProductDetails();
     
-    // id is required in the dependency array. If the user navigates directly from one product URL
-    // to another (e.g. via a "related products" link), this ensures the new data is fetched correctly.
+    // The id parameter is required in the dependency array. If navigation occurs directly from one product URL
+    // to another without unmounting, this ensures the new data is fetched correctly for the updated route.
   }, [id]);
 
   if (loading) return <div className="p-8 text-center">Loading product details...</div>;
