@@ -1,3 +1,4 @@
+// ProductList.jsx: Component responsible for rendering the grid of available products. Consumes the useProductList hook and filters items based on the global search state.
 import useProductList from '../hooks/useProductList';
 import ProductItem from './ProductItem';
 import { useSelector } from 'react-redux';
@@ -15,8 +16,8 @@ const ProductList = () => {
     return <div className="p-8 text-center text-red-500">Error: {error}</div>;
   }
 
-  // Filter on the client-side after the initial bulk fetch. 
-  // Lowercasing both strings masks user typos and avoids strict case-sensitivity misses.
+  // Filtering occurs on the client-side after the initial bulk fetch completes. 
+  // Lowercasing both the search term and the product title strings masks typos and avoids strict case-sensitivity misses during search.
   const filteredProducts = products.filter(product => 
     product.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
