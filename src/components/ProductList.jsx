@@ -15,6 +15,8 @@ const ProductList = () => {
     return <div className="p-8 text-center text-red-500">Error: {error}</div>;
   }
 
+  // Filter on the client-side after the initial bulk fetch. 
+  // Lowercasing both strings masks user typos and avoids strict case-sensitivity misses.
   const filteredProducts = products.filter(product => 
     product.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
