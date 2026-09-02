@@ -32,6 +32,9 @@ const ProductDetail = () => {
     };
 
     fetchProductDetails();
+    
+    // id is required in the dependency array. If the user navigates directly from one product URL
+    // to another (e.g. via a "related products" link), this ensures the new data is fetched correctly.
   }, [id]);
 
   if (loading) return <div className="p-8 text-center">Loading product details...</div>;
