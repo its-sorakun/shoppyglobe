@@ -1,3 +1,4 @@
+// Cart.jsx: Main shopping cart view. Aggregates cart items from Redux state and calculates the total order value dynamically during render.
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { selectCartItems } from '../redux/cartSlice';
