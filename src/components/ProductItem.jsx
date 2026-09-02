@@ -1,7 +1,12 @@
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { addToCart } from '../redux/cartSlice';
 
+/**
+ * ProductItem Component
+ * Renders an individual product card with details and an Add to Cart button.
+ */
 const ProductItem = ({ product }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -27,6 +32,16 @@ const ProductItem = ({ product }) => {
       </button>
     </div>
   );
+};
+
+// Define appropriate prop types as requested in the assignment
+ProductItem.propTypes = {
+  product: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    thumbnail: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default ProductItem;
