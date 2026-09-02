@@ -1,3 +1,4 @@
+// searchSlice.js: Redux Toolkit slice managing the global search term state used for filtering products.
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
