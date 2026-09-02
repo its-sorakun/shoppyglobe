@@ -1,3 +1,4 @@
+// Header.jsx: Global navigation component. Contains the application branding, the active cart item count, and the search input for filtering products.
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { setSearchTerm, selectSearchTerm } from '../redux/searchSlice';
@@ -13,8 +14,8 @@ const Header = () => {
       <Link to="/" className="text-2xl font-bold whitespace-nowrap">ShoppyGlobe</Link>
       
       <div className="flex-1 max-w-xl mx-4">
-        {/* Using a controlled input tied directly to the Redux dispatch means every keystroke 
-            synchronously updates global state, allowing ProductList to filter in real-time. */}
+        {/* Tying a controlled input directly to the Redux dispatch means every keystroke 
+            synchronously updates global state. This architecture allows the ProductList to filter items in real-time as typing occurs. */}
         <input 
           type="text" 
           placeholder="Search products..." 
