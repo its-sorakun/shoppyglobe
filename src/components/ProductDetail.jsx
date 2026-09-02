@@ -48,7 +48,7 @@ const ProductDetail = () => {
       </button>
       <div className="bg-white border rounded shadow p-6 flex flex-col md:flex-row gap-8">
         <div className="md:w-1/2">
-          <img src={product.thumbnail} alt={product.title} className="w-full object-cover rounded bg-gray-100" />
+          <img src={product.thumbnail} alt={product.title} loading="lazy" className="w-full object-cover rounded bg-gray-100" />
         </div>
         <div className="md:w-1/2">
           <h2 className="text-3xl font-bold mb-2">{product.title}</h2>
