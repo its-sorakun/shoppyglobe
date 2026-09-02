@@ -6,6 +6,8 @@ const useProductList = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    // We intentionally pass an empty dependency array to this effect so it only fires
+    // once on mount. Omitting it would cause React to re-fire the fetch on every render, DDoSing the dummy API.
     const fetchProducts = async () => {
       try {
         const response = await fetch('https://dummyjson.com/products');
