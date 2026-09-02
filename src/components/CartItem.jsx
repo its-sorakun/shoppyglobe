@@ -17,7 +17,7 @@ const CartItem = ({ item }) => {
   return (
     <div className="flex items-center justify-between border-b py-4">
       <div className="flex items-center gap-4">
-        <img src={item.thumbnail} alt={item.title} className="w-16 h-16 object-cover rounded" />
+        <img src={item.thumbnail} alt={item.title} loading="lazy" className="w-16 h-16 object-cover rounded" />
         <div>
           <h3 className="font-semibold">{item.title}</h3>
           <p className="text-gray-600">${item.price.toFixed(2)}</p>
