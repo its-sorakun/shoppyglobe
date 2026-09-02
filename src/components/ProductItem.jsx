@@ -12,7 +12,7 @@ const ProductItem = ({ product }) => {
       onClick={() => navigate(`/product/${product.id}`)}
     >
       <div>
-        <img src={product.thumbnail} alt={product.title} className="w-full h-48 object-cover rounded mb-4" />
+        <img src={product.thumbnail} alt={product.title} loading="lazy" className="w-full h-48 object-cover rounded mb-4" />
         <h2 className="text-lg font-semibold">{product.title}</h2>
         <p className="text-gray-600 mb-2">${product.price}</p>
       </div>
