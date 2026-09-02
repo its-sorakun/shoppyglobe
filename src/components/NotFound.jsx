@@ -1,3 +1,4 @@
+// NotFound.jsx: Fallback component rendered when no matching routes are found in the React Router configuration.
 import { Link } from 'react-router-dom';
 
 const NotFound = () => {
