@@ -16,6 +16,8 @@ const Checkout = () => {
     
     setOrderPlaced(true);
     
+    // We intentionally delay the redirect here. If we execute navigate() immediately, 
+    // the component unmounts instantly and the user never gets to visually process the success toast.
     setTimeout(() => {
       dispatch(clearCart());
       navigate('/');
