@@ -13,10 +13,10 @@ const Checkout = () => {
   const handlePlaceOrder = (e) => {
     e.preventDefault();
     if (items.length === 0) return;
-    
+
     setOrderPlaced(true);
-    
-    // We intentionally delay the redirect here. If we execute navigate() immediately, 
+
+    // Intentionally delay the redirect here. If we execute navigate() immediately, 
     // the component unmounts instantly and the user never gets to visually process the success toast.
     setTimeout(() => {
       dispatch(clearCart());
@@ -45,7 +45,7 @@ const Checkout = () => {
           <label className="block text-gray-700 mb-2">Address</label>
           <textarea className="w-full border rounded p-2 focus:ring focus:ring-blue-200" rows="3" required></textarea>
         </div>
-        
+
         <h3 className="text-lg font-semibold mb-4 mt-6 border-b pb-2">Order Summary</h3>
         {items.length === 0 ? (
           <p className="text-gray-500 mb-6 italic">No items in your cart.</p>
@@ -66,8 +66,8 @@ const Checkout = () => {
           </div>
         )}
 
-        <button 
-          type="submit" 
+        <button
+          type="submit"
           className="w-full bg-green-600 text-white py-3 rounded shadow hover:bg-green-700 transition font-bold disabled:bg-gray-400 disabled:cursor-not-allowed"
           disabled={items.length === 0}
         >
