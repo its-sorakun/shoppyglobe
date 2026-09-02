@@ -1,9 +1,15 @@
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 import { updateQuantity, removeFromCart } from '../redux/cartSlice';
 
+/**
+ * CartItem Component
+ * Renders a single item in the shopping cart and handles quantity adjustments.
+ */
 const CartItem = ({ item }) => {
   const dispatch = useDispatch();
 
+  // Ensure quantity does not drop below 1
   const handleDecrease = () => {
     if (item.quantity > 1) {
       dispatch(updateQuantity({ id: item.id, quantity: item.quantity - 1 }));
@@ -49,6 +55,17 @@ const CartItem = ({ item }) => {
       </div>
     </div>
   );
+};
+
+// Define appropriate prop types for reusability and validation
+CartItem.propTypes = {
+  item: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    thumbnail: PropTypes.string.isRequired,
+    quantity: PropTypes.number.isRequired,
+  }).isRequired,
 };
 
 export default CartItem;
