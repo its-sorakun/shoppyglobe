@@ -1,9 +1,9 @@
 // backend/controllers/productController.js: Handles the business logic for the product catalog.
 // Exposes read-only queries to fetch lists of products or individual product details.
 
-const Product = require('../models/Product');
+import Product from '../models/Product.js';
 
-exports.getProducts = async (req, res) => {
+export const getProducts = async (req, res) => {
   try {
     // Fetch all documents in the Product collection.
     // A lean() query could be used here for performance, but we return full Mongoose documents 
@@ -15,7 +15,7 @@ exports.getProducts = async (req, res) => {
   }
 };
 
-exports.getProductById = async (req, res) => {
+export const getProductById = async (req, res) => {
   try {
     const { id } = req.params;
     
