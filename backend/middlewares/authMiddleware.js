@@ -1,7 +1,7 @@
 // backend/middlewares/authMiddleware.js: Express middleware for protecting routes using JSON Web Tokens.
 // Intercepts incoming requests to verify the client's identity before allowing them to hit protected controller logic.
 
-const jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken';
 
 const authMiddleware = (req, res, next) => {
   // The standard HTTP specification expects tokens in the format: 'Bearer <token>'
@@ -30,4 +30,4 @@ const authMiddleware = (req, res, next) => {
   }
 };
 
-module.exports = authMiddleware;
+export default authMiddleware;
