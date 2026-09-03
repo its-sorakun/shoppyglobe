@@ -19,12 +19,21 @@ const ProductDetail = () => {
       setLoading(true);
       setError(null);
       try {
-        const response = await fetch(`https://dummyjson.com/products/${id}`);
+        const response = await fetch(`http://localhost:5000/products/${id}`);
         if (!response.ok) {
           throw new Error('Failed to fetch product details');
         }
         const data = await response.json();
-        setProduct(data);
+        
+        // Map the backend data structure for consistency across the frontend.
+        setProduct({
+          ...data,
+          id: data._id,
+          title: data.name,
+          thumbnail: 'https://placehold.co/300x300?text=No+Image',
+          brand: 'ShoppyGlobe',
+          category: 'General'
+        });
       } catch (err) {
         setError(err.message);
       } finally {
