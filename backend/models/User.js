@@ -1,7 +1,7 @@
 // backend/models/User.js: Defines the MongoDB schema and model for application users.
 // Establishes the structure for authentication credentials stored in the database.
 
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 // Defining the schema separates the logical structure of a user document from the actual database records.
 // Mongoose enforces these types and constraints before allowing a write to the database engine.
@@ -24,4 +24,4 @@ const userSchema = new mongoose.Schema({
   timestamps: true 
 });
 
-module.exports = mongoose.model('User', userSchema);
+export default mongoose.model('User', userSchema);
