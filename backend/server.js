@@ -1,15 +1,17 @@
 // backend/server.js: Primary entry point for the Node.js backend application.
 // Bootstraps the Express server, establishes database connections, and registers all middleware/routes.
 
-require('dotenv').config();
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
+import dotenv from 'dotenv';
+dotenv.config();
 
-// Import route definitions
-const authRoutes = require('./routes/authRoutes');
-const productRoutes = require('./routes/productRoutes');
-const cartRoutes = require('./routes/cartRoutes');
+import express from 'express';
+import mongoose from 'mongoose';
+import cors from 'cors';
+
+// Import route definitions (with explicit .js extension required for ES Modules in Node)
+import authRoutes from './routes/authRoutes.js';
+import productRoutes from './routes/productRoutes.js';
+import cartRoutes from './routes/cartRoutes.js';
 
 const app = express();
 
