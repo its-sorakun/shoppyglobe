@@ -1,10 +1,10 @@
 // backend/controllers/cartController.js: Handles the business logic for shopping carts.
 // Ensures data consistency when users mutate their carts, guarding against invalid product selections.
 
-const Cart = require('../models/Cart');
-const Product = require('../models/Product');
+import Cart from '../models/Cart.js';
+import Product from '../models/Product.js';
 
-exports.addToCart = async (req, res) => {
+export const addToCart = async (req, res) => {
   try {
     const { productId, quantity } = req.body;
     const userId = req.user.userId; // Extracted safely from the authMiddleware.
@@ -41,7 +41,7 @@ exports.addToCart = async (req, res) => {
   }
 };
 
-exports.updateCartItem = async (req, res) => {
+export const updateCartItem = async (req, res) => {
   try {
     const { id: productId } = req.params;
     const { quantity } = req.body;
@@ -70,7 +70,7 @@ exports.updateCartItem = async (req, res) => {
   }
 };
 
-exports.removeFromCart = async (req, res) => {
+export const removeFromCart = async (req, res) => {
   try {
     const { id: productId } = req.params;
     const userId = req.user.userId;
