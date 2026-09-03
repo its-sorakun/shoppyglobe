@@ -1,9 +1,9 @@
 // backend/routes/cartRoutes.js: Defines the Express router for shopping cart endpoints.
 // Protects all cart mutations behind the authMiddleware, ensuring only verified users can modify their carts.
 
-const express = require('express');
-const cartController = require('../controllers/cartController');
-const authMiddleware = require('../middlewares/authMiddleware');
+import express from 'express';
+import * as cartController from '../controllers/cartController.js';
+import authMiddleware from '../middlewares/authMiddleware.js';
 
 const router = express.Router();
 
@@ -20,4 +20,4 @@ router.put('/:id', cartController.updateCartItem);
 // Remove a specific product from the cart entirely.
 router.delete('/:id', cartController.removeFromCart);
 
-module.exports = router;
+export default router;
