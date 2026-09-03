@@ -1,7 +1,7 @@
 // CartItem.jsx: Component rendering a single row within the shopping cart. Handles dispatching quantity updates and removals for its specific item.
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { updateQuantity, removeFromCart } from '../redux/cartSlice';
+import { updateQuantityThunk, removeFromCartThunk } from '../redux/cartSlice';
 
 const CartItem = ({ item }) => {
   const dispatch = useDispatch();
@@ -9,12 +9,12 @@ const CartItem = ({ item }) => {
   const handleDecrease = () => {
     // This conditional guards against rapid double-clicks firing the dispatch before React can re-render and disable the button, preventing invalid negative quantities from reaching the Redux store.
     if (item.quantity > 1) {
-      dispatch(updateQuantity({ id: item.id, quantity: item.quantity - 1 }));
+      dispatch(updateQuantityThunk({ id: item.id, quantity: item.quantity - 1 }));
     }
   };
 
   const handleIncrease = () => {
-    dispatch(updateQuantity({ id: item.id, quantity: item.quantity + 1 }));
+    dispatch(updateQuantityThunk({ id: item.id, quantity: item.quantity + 1 }));
   };
 
   return (
@@ -45,7 +45,7 @@ const CartItem = ({ item }) => {
         </div>
         <button 
           className="text-red-500 hover:text-red-700"
-          onClick={() => dispatch(removeFromCart(item.id))}
+          onClick={() => dispatch(removeFromCartThunk(item.id))}
         >
           Remove
         </button>
@@ -56,7 +56,7 @@ const CartItem = ({ item }) => {
 
 CartItem.propTypes = {
   item: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     title: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     thumbnail: PropTypes.string.isRequired,
