@@ -2,7 +2,7 @@
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { addToCart } from '../redux/cartSlice';
+import { addToCartThunk } from '../redux/cartSlice';
 
 const ProductItem = ({ product }) => {
   const dispatch = useDispatch();
@@ -21,9 +21,8 @@ const ProductItem = ({ product }) => {
       <button 
         className="mt-4 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition"
         onClick={(e) => {
-          // Stop event bubbling to prevent triggering the wrapper div's onClick handler. Failing to stop propagation would cause immediate navigation away from the current view mid-dispatch.
           e.stopPropagation();
-          dispatch(addToCart(product));
+          dispatch(addToCartThunk(product));
         }}
       >
         Add to Cart
@@ -34,7 +33,7 @@ const ProductItem = ({ product }) => {
 
 ProductItem.propTypes = {
   product: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     title: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     thumbnail: PropTypes.string.isRequired,
