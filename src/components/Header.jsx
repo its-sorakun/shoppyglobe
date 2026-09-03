@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { setSearchTerm, selectSearchTerm } from '../redux/searchSlice';
 import { selectCartTotalItems } from '../redux/cartSlice';
+import { selectAuth, logout } from '../redux/authSlice';
 
 const Header = () => {
   const dispatch = useDispatch();
   const searchTerm = useSelector(selectSearchTerm);
   const cartTotal = useSelector(selectCartTotalItems);
+  const { isAuthenticated } = useSelector(selectAuth);
 
   return (
     <header className="bg-blue-600 text-white p-4 shadow-md flex flex-wrap gap-4 justify-between items-center">
@@ -43,6 +45,26 @@ const Header = () => {
               )}
             </Link>
           </li>
+          
+          {isAuthenticated ? (
+            <li>
+              <button 
+                onClick={() => dispatch(logout())} 
+                className="hover:text-blue-200 focus:outline-none"
+              >
+                Logout
+              </button>
+            </li>
+          ) : (
+            <>
+              <li>
+                <Link to="/login" className="hover:text-blue-200">Login</Link>
+              </li>
+              <li>
+                <Link to="/register" className="hover:text-blue-200">Register</Link>
+              </li>
+            </>
+          )}
         </ul>
       </nav>
     </header>
