@@ -15,6 +15,8 @@ const ProductDetail = lazy(() => import('./components/ProductDetail.jsx'))
 const Cart = lazy(() => import('./components/Cart.jsx'))
 const Checkout = lazy(() => import('./components/Checkout.jsx'))
 const NotFound = lazy(() => import('./components/NotFound.jsx'))
+const Login = lazy(() => import('./components/Login.jsx'))
+const Register = lazy(() => import('./components/Register.jsx'))
 
 // createBrowserRouter is utilized here to opt into React Router v6's data APIs.
 // Even though route loaders are not utilized here, this setup future-proofs the routing architecture.
@@ -39,6 +41,14 @@ const router = createBrowserRouter([
       {
         path: '/checkout',
         element: <Checkout />,
+      },
+      {
+        path: '/login',
+        element: <Login />,
+      },
+      {
+        path: '/register',
+        element: <Register />,
       }
     ],
   },
