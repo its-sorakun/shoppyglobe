@@ -1,7 +1,7 @@
 // backend/models/Product.js: Defines the MongoDB schema and model for the e-commerce product catalog.
 // Structures how individual items for sale are represented in the database.
 
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 // The product schema dictates the exact fields required for the catalog.
 // Enforcing numerical constraints (min: 0) directly at the schema layer prevents 
@@ -31,4 +31,4 @@ const productSchema = new mongoose.Schema({
   timestamps: true
 });
 
-module.exports = mongoose.model('Product', productSchema);
+export default mongoose.model('Product', productSchema);
