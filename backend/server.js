@@ -28,17 +28,8 @@ mongoose.connect(process.env.MONGO_URI)
   .catch(err => console.error('MongoDB connection failed:', err));
 
 // Route mounting
-// Prefixing routes helps version and organize the API surface area.
-app.use('/register', (req, res, next) => {
-    // Note: The PDF requires POST /register and POST /login directly at the root, 
-    // but standard practice is /api/auth. However, to strictly follow the PDF paths:
-    req.url = '/register'; 
-    next();
-}, authRoutes);
-app.use('/login', (req, res, next) => {
-    req.url = '/login';
-    next();
-}, authRoutes);
+// The PDF requires POST /register and POST /login directly at the root.
+app.use('/', authRoutes);
 
 // Mounting exactly as requested by the PDF
 app.use('/products', productRoutes);
