@@ -1,8 +1,8 @@
 // backend/routes/productRoutes.js: Defines the Express router for the product catalog endpoints.
 // Exposes the public endpoints needed to browse available inventory.
 
-const express = require('express');
-const productController = require('../controllers/productController');
+import express from 'express';
+import * as productController from '../controllers/productController.js';
 
 const router = express.Router();
 
@@ -12,4 +12,4 @@ router.get('/', productController.getProducts);
 // Retrieve a single product by its MongoDB ObjectId.
 router.get('/:id', productController.getProductById);
 
-module.exports = router;
+export default router;
