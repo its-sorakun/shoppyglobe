@@ -11,6 +11,10 @@ node_modules
 dist
 dist-ssr
 *.local
+
+# backend
+backend/node_modules/
+.env
 React Project (1).pdf
 Project_ Build APIs with Node (1).pdf
 
