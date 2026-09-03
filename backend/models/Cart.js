@@ -1,7 +1,7 @@
 // backend/models/Cart.js: Defines the MongoDB schema and model for user shopping carts.
 // Establishes relational references between specific users and their selected products.
 
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 // The cart schema embeds an array of item subdocuments. 
 // This denormalization approach is optimal for MongoDB, keeping the cart payload 
@@ -31,4 +31,4 @@ const cartSchema = new mongoose.Schema({
   timestamps: true
 });
 
-module.exports = mongoose.model('Cart', cartSchema);
+export default mongoose.model('Cart', cartSchema);
