@@ -11,12 +11,21 @@ const useProductList = () => {
     // once on mount. Omitting it would cause React to re-fire the fetch on every render, resulting in a continuous loop of API requests.
     const fetchProducts = async () => {
       try {
-        const response = await fetch('https://dummyjson.com/products');
+        const response = await fetch('http://localhost:5000/products');
         if (!response.ok) {
           throw new Error('Failed to fetch products');
         }
         const data = await response.json();
-        setProducts(data.products);
+        
+        // Map the backend data structure to match what the frontend expects,
+        // specifically translating the MongoDB _id string into the standard id field.
+        const mappedProducts = data.map(p => ({
+          ...p,
+          id: p._id,
+          title: p.name,
+          thumbnail: 'https://placehold.co/150x150?text=No+Image'
+        }));
+        setProducts(mappedProducts);
       } catch (err) {
         setError(err.message);
       } finally {
