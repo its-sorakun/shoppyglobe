@@ -28,10 +28,10 @@ mongoose.connect(process.env.MONGO_URI)
   .catch(err => console.error('MongoDB connection failed:', err));
 
 // Route mounting
-// The PDF requires POST /register and POST /login directly at the root.
+// Authentication endpoints are mounted directly at the root.
 app.use('/', authRoutes);
 
-// Mounting exactly as requested by the PDF
+// Mount core domain routes to their respective base paths.
 app.use('/products', productRoutes);
 app.use('/cart', cartRoutes);
 

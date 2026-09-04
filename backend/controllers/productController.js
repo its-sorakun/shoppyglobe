@@ -6,8 +6,8 @@ import Product from '../models/Product.js';
 export const getProducts = async (req, res) => {
   try {
     // Fetch all documents in the Product collection.
-    // A lean() query could be used here for performance, but we return full Mongoose documents 
-    // to allow for potential virtual fields or formatting later.
+    // A lean() query could be used here for performance, but returning full Mongoose documents 
+    // allows for potential virtual fields or formatting later.
     const products = await Product.find({});
     res.status(200).json(products);
   } catch (error) {
