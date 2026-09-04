@@ -45,9 +45,23 @@ The backend is built strictly using modern **Node.js ES Modules** (`import`/`exp
 
 ---
 
-## API Documentation & ThunderClient Verification
+## MongoDB Database Verification
 
-The following screenshots demonstrate successful API interactions using ThunderClient, verifying proper status codes, payload structures, and JWT authentication.
+The following screenshots directly from the `mongosh` shell demonstrate that data is properly persisted within the MongoDB collections, adhering exactly to the defined schemas.
+
+**1. Products Collection**
+Displays the seeded product inventory, verifying the presence of `name`, `price`, `description`, and `stockQuantity` fields.
+![Products Collection](screenshots/products_mongodb.png)
+
+**2. Users and Carts Collections**
+Displays the securely hashed passwords in the users collection, alongside the schema structure linking the cart items arrays directly to their respective user IDs.
+![Users and Carts Collection](screenshots/users_and_carts_mongodb.png)
+
+---
+
+## API Testing Documentation (ThunderClient)
+
+The following documentation acts as comprehensive proof of API functionality. These screenshots verify proper HTTP status codes, payload structures, and JWT-based request authorization across all required endpoints.
 
 ### Authentication
 
