@@ -105,3 +105,15 @@ Mutates the quantity of a specific item already in the cart.
 **7. Remove Item from Cart (`DELETE /cart/:id`)**
 Filters the item out of the cart's subdocument array entirely.
 ![Delete Cart Item](screenshots/delete.png)
+
+---
+
+### Error Handling & Security
+
+**Access Denied (Missing JWT)**
+Verifies that cart routes are strictly protected. Accessing without a valid JWT returns a 401 Unauthorized status.
+![Access Denied](screenshots/access_denied_cart.png)
+
+**Validation: Product Not Found**
+Validates that input data is rigorously checked. Sending an invalid or non-existent product ID to the cart route correctly throws a 404 Not Found error.
+![Product Not Found Validation](screenshots/product_not_exists.png)
